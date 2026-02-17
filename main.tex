@@ -1,0 +1,56 @@
+\documentclass[11pt,a4paper]{report}
+
+% --- PAQUETES NECESARIOS ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[most]{tcolorbox} 
+\usepackage{fontawesome5}    
+\usepackage{enumitem}       
+\usepackage{graphicx}       
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+% --- DEFINICIÓN DEL ESTILO DE LA RECETA ---
+\newtcolorbox{receta}[2]{
+    enhanced,
+    colback=white,
+    colframe=orange!80!black,
+    fonttitle=\bfseries\Large,
+    title={\faUtensils\ #1 \hfill \faClock\ #2},
+    % ESTA ES LA LÍNEA QUE FALTA PARA EL ÍNDICE:
+    code={\addcontentsline{toc}{section}{#1}}, 
+    attach boxed title to top center={yshift=-3mm},
+    boxed title style={colback=orange!80!black, sharp corners},
+    sharp corners,
+    drop shadow,
+    breakable,
+    before skip=20pt,
+    after skip=20pt
+}
+
+% --- INICIO DEL DOCUMENTO ---
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{5cm}
+    {\Huge \textbf{Mi Cuaderno de Cocina}} \\
+    \vspace{1.5cm}
+    {\Large \textit{Recetas hechas con amor y \LaTeX}} \\
+    \vfill
+    {\Large \today}
+\end{titlepage}
+
+\tableofcontents 
+\newpage
+
+\chapter{Entrantes y Aperitivos}
+\input{secciones/guacamole.tex}
+\input{secciones/salmorejo.tex} 
+
+\chapter{Platos Principales}
+\input{secciones/guisillo.tex}
+\input{secciones/fideos.tex}
+\input{secciones/tacos.tex}
+
+\end{document}
