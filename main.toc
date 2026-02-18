@@ -1,8 +1,0 @@
-\babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {1}Entrantes y Aperitivos}{2}{}%
-\contentsline {section}{Guacamole Casero}{2}{}%
-\contentsline {section}{Salmorejo}{2}{}%
-\contentsline {chapter}{\numberline {2}Platos Principales}{4}{}%
-\contentsline {section}{Guisillo de Carne}{4}{}%
-\contentsline {section}{Fideos con Carne}{4}{}%
-\contentsline {section}{Tacos de Entraña y Piña}{5}{}%

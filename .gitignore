@@ -1,0 +1,14 @@
+# Archivos auxiliares de LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.pdf
+*.out
+*.lof
+*.lot
+
+# Carpetas de sistema
+.DS_Store
