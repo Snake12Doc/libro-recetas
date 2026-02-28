@@ -8,6 +8,7 @@
 \usepackage{enumitem}       
 \usepackage{graphicx}       
 \usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
 \geometry{margin=2.5cm}
 
 % --- DEFINICIÓN DEL ESTILO DE LA RECETA ---
@@ -33,12 +34,18 @@
 
 \begin{titlepage}
     \centering
-    \vspace*{5cm}
-    {\Huge \textbf{Mi Cuaderno de Cocina}} \\
-    \vspace{1.5cm}
+    \vspace*{1cm} % Reducimos el espacio superior inicial
+    {\Huge \textbf{Si esto compila, se come}} \\
+    \vspace{0.8cm} % Reducimos espacio bajo el título
     {\Large \textit{Recetas hechas con amor y \LaTeX}} \\
-    \vfill
-    {\Large \today}
+    
+    \vspace{1cm} % Espacio antes de la imagen
+    % Ajustamos un poco el ancho de la imagen para que no ocupe tanto
+    \includegraphics[width=0.55\textwidth]{imagenes/portada.png} 
+    
+    \vfill % Este comando empuja lo siguiente al final de la página
+    {\Large \faUtensils \ \today} \\
+    \vspace{0.5cm} % Un pequeño margen final
 \end{titlepage}
 
 \tableofcontents 
