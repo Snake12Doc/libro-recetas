@@ -9,6 +9,8 @@
 \usepackage{graphicx}       
 \usepackage{geometry}
 \usepackage[hidelinks]{hyperref}
+\usepackage{caption} % Para manejar mejor los pies de foto
+\usepackage{qrcode}  % Opcional, si quieres que LaTeX genere el QR por ti
 \geometry{margin=2.5cm}
 
 % --- DEFINICIÓN DEL ESTILO DE LA RECETA ---
@@ -34,18 +36,17 @@
 
 \begin{titlepage}
     \centering
-    \vspace*{1cm} % Reducimos el espacio superior inicial
+    \vspace*{1cm}
     {\Huge \textbf{Si esto compila, se come}} \\
-    \vspace{0.8cm} % Reducimos espacio bajo el título
-    {\Large \textit{Recetas hechas con amor y \LaTeX}} \\
+    \vspace{0.8cm}
+    {\Large \textit{Recetas hechas con amor y \LaTeX\ }}
     
-    \vspace{1cm} % Espacio antes de la imagen
-    % Ajustamos un poco el ancho de la imagen para que no ocupe tanto
-    \includegraphics[width=0.55\textwidth]{imagenes/portada.png} 
+    \vspace{1cm}
+    \includegraphics[width=0.55\textwidth]{imagenes/portada.png}
     
-    \vfill % Este comando empuja lo siguiente al final de la página
-    {\Large \faUtensils \ \today} \\
-    \vspace{0.5cm} % Un pequeño margen final
+    \vfill
+    {\Large \faUtensils \ \today} \\ % Aquí hemos borrado el 
+    \vspace{0.5cm}
 \end{titlepage}
 
 \tableofcontents 
