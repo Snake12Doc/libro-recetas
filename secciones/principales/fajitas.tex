@@ -25,16 +25,15 @@
         \end{enumerate}
     \end{minipage}
 
-    \vspace{1cm}
-    \begin{tcolorbox}[colback=orange!5, colframe=orange!50, title=El rincón del Chef, sharp corners]
+    \vspace{1em}
+    \begin{tcolorbox}[colback=orange!5, colframe=orange!50, title=El rincón del Chef]
         \begin{minipage}{0.25\textwidth}
             \centering
-            % Usamos \mbox para proteger el dibujo del QR
-            \mbox{\qrcode[height=1.5cm]{https://open.spotify.com/playlist/6XOkYG9TT3Scvs9rsZ0xZF}} 
+            \usebox{\miqrMexicano} % <--- Aquí llamamos al QR ya renderizado
         \end{minipage}
         \begin{minipage}{0.7\textwidth}
-            \textbf{\faMusic\ Música sugerida:} Escanea para cocinar con ritmo. \\
-            \textbf{\faLightbulb\ Mi nota:} \textit{Añade una base de guacamole sobre la tortilla caliente antes de poner la carne.}
+            \textbf{\faMusic\ Música:} Escanea para cocinar con ritmo. \\
+            \textbf{\faLightbulb\ Nota:} \textit{Unta el guacamole en la tortilla caliente.}
         \end{minipage}
     \end{tcolorbox}
 \end{receta}
