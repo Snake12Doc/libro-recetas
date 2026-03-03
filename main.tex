@@ -13,22 +13,31 @@
 \usepackage{qrcode}  % Opcional, si quieres que LaTeX genere el QR por ti
 \geometry{margin=2.5cm}
 
-% --- DEFINICIÓN DEL ESTILO DE LA RECETA ---
+% --- DEFINICIÓN DEL ESTILO DE LA RECETA CORREGIDO ---
 \newtcolorbox{receta}[2]{
     enhanced,
     colback=white,
     colframe=orange!80!black,
     fonttitle=\bfseries\Large,
     title={\faUtensils\ #1 \hfill \faClock\ #2},
-    % ESTA ES LA LÍNEA QUE FALTA PARA EL ÍNDICE:
-    code={\addcontentsline{toc}{section}{#1}}, 
+    % En lugar de 'no hyperref', usamos esto para evitar el conflicto
+    hypertarget={receta#1}, 
     attach boxed title to top center={yshift=-3mm},
     boxed title style={colback=orange!80!black, sharp corners},
     sharp corners,
     drop shadow,
+    % Quitamos el 'code' que añade al índice desde aquí 
     breakable,
     before skip=20pt,
     after skip=20pt
+}
+
+% --- COMANDO PARA EL ÍNDICE Y REFERENCIAS SIN WARNINGS ---
+\newcommand{\nuevaReceta}[3]{% 
+    \phantomsection % Crea el ancla para el índice y hyperref
+    \addcontentsline{toc}{section}{#1}% Registra en el índice
+    \begin{receta}{#1}{#2}% Abre la caja (Título y Tiempo)
+    \label{#3}% Establece la etiqueta para usar con \pageref
 }
 
 % --- INICIO DEL DOCUMENTO ---
@@ -66,5 +75,7 @@
 \input{secciones/principales/sopa_miso.tex}
 \input{secciones/principales/asado_versatil.tex}
 \input{secciones/principales/fajitas.tex}
+
+\chapter{Postres}
 
 \end{document}
