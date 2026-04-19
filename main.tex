@@ -40,12 +40,28 @@
     \label{#3}% Establece la etiqueta para usar con \pageref
 }
 
+% --- AYUDAS DE MAQUETACIÓN SEGÚN TIPO DE RECETA ---
+\newcommand{\recetaCompacta}[1]{%
+    \input{#1}%
+}
+
+\newcommand{\recetaCompactaSeparada}[1]{%
+    \clearpage
+    \input{#1}%
+}
+
+\newcommand{\recetaPaginaCompleta}[1]{%
+    \input{#1}%
+    \clearpage
+}
+
 % --- INICIO DEL DOCUMENTO ---
 \begin{document}
 
     \newsavebox{\miqrMexicano}
     \sbox{\miqrMexicano}{\qrcode[height=1.5cm]{https://open.spotify.com/playlist/6XOkYG9TT3Scvs9rsZ0xZF}}
 
+\hypersetup{pageanchor=false}
 \begin{titlepage}
     \centering
     \vspace*{1cm}
@@ -60,24 +76,25 @@
     {\Large \faUtensils \ \today} \\ % Aquí hemos borrado el 
     \vspace{0.5cm}
 \end{titlepage}
+\hypersetup{pageanchor=true}
 
 \tableofcontents 
 \newpage
 
 \chapter{Entrantes y Aperitivos}
-\input{secciones/entrantes/guacamole.tex}
-\input{secciones/entrantes/salmorejo.tex} 
+\recetaCompacta{secciones/entrantes/guacamole.tex}
+\recetaCompactaSeparada{secciones/entrantes/salmorejo.tex} 
 
 \chapter{Platos Principales}
-\input{secciones/principales/guisillo.tex}
-\input{secciones/principales/remojon.tex}
-\input{secciones/principales/fideos.tex}
-\input{secciones/principales/tacos_entrana.tex}
-\input{secciones/principales/sopa_miso.tex}
-\input{secciones/principales/asado_versatil.tex}
-\input{secciones/principales/fajitas.tex}
+\recetaPaginaCompleta{secciones/principales/guisillo.tex}
+\recetaPaginaCompleta{secciones/principales/remojon.tex}
+\recetaPaginaCompleta{secciones/principales/fideos.tex}
+\recetaPaginaCompleta{secciones/principales/tacos_entrana.tex}
+\recetaPaginaCompleta{secciones/principales/sopa_miso.tex}
+\recetaPaginaCompleta{secciones/principales/asado_versatil.tex}
+\recetaPaginaCompleta{secciones/principales/fajitas.tex}
 
 \chapter{Postres}
-\input{secciones/postres/mousse_limon.tex}
+\recetaCompacta{secciones/postres/mousse_limon.tex}
 
 \end{document}
