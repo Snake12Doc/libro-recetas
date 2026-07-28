@@ -11,7 +11,11 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption} % Para manejar mejor los pies de foto
 \usepackage{qrcode}  % Opcional, si quieres que LaTeX genere el QR por ti
+\usepackage{titlesec}
 \geometry{margin=2.5cm}
+
+% Títulos compactos para dejar espacio a la primera receta de cada capítulo.
+\titlespacing*{\chapter}{0pt}{-30pt}{14pt}
 
 % --- DEFINICIÓN DEL ESTILO DE LA RECETA CORREGIDO ---
 \newtcolorbox{receta}[2]{
@@ -27,9 +31,8 @@
     sharp corners,
     drop shadow,
     % Quitamos el 'code' que añade al índice desde aquí 
-    breakable,
-    before skip=20pt,
-    after skip=20pt
+    before skip=12pt,
+    after skip=0pt
 }
 
 % --- COMANDO PARA EL ÍNDICE Y REFERENCIAS SIN WARNINGS ---
@@ -40,16 +43,18 @@
     \label{#3}% Establece la etiqueta para usar con \pageref
 }
 
-% --- AYUDAS DE MAQUETACIÓN SEGÚN TIPO DE RECETA ---
-\newcommand{\recetaCompacta}[1]{%
-    \input{#1}%
+% --- IMÁGENES DE RECETA COMPLETAS ---
+% El argumento opcional adapta el ancho al espacio disponible en cada receta.
+\newcommand{\imagenReceta}[3][0.64]{%
+    \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}%
+        \\ \vspace{0.3em}
+        \small \textit{#3}
+    \end{center}
+    \vspace{0.2em}%
 }
 
-\newcommand{\recetaCompactaSeparada}[1]{%
-    \clearpage
-    \input{#1}%
-}
-
+% Cada cuadro comienza donde haya espacio suficiente y termina la página.
 \newcommand{\recetaPaginaCompleta}[1]{%
     \input{#1}%
     \clearpage
@@ -82,19 +87,20 @@
 \newpage
 
 \chapter{Entrantes y Aperitivos}
-\recetaCompacta{secciones/entrantes/guacamole.tex}
-\recetaCompactaSeparada{secciones/entrantes/salmorejo.tex} 
+\recetaPaginaCompleta{secciones/entrantes/guacamole.tex}
+\recetaPaginaCompleta{secciones/entrantes/salmorejo.tex}
 
 \chapter{Platos Principales}
 \recetaPaginaCompleta{secciones/principales/guisillo.tex}
 \recetaPaginaCompleta{secciones/principales/remojon.tex}
 \recetaPaginaCompleta{secciones/principales/fideos.tex}
+\recetaPaginaCompleta{secciones/principales/arroz_lena.tex}
 \recetaPaginaCompleta{secciones/principales/tacos_entrana.tex}
 \recetaPaginaCompleta{secciones/principales/sopa_miso.tex}
 \recetaPaginaCompleta{secciones/principales/asado_versatil.tex}
 \recetaPaginaCompleta{secciones/principales/fajitas.tex}
 
 \chapter{Postres}
-\recetaCompacta{secciones/postres/mousse_limon.tex}
+\recetaPaginaCompleta{secciones/postres/mousse_limon.tex}
 
 \end{document}
