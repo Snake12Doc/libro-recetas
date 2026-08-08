@@ -19,12 +19,12 @@
 \titlespacing*{\chapter}{0pt}{-30pt}{8pt}
 
 % --- DEFINICIÓN DEL ESTILO DE LA RECETA CORREGIDO ---
-\newtcolorbox{receta}[3][]{
+\newtcolorbox{receta}[4][]{
     enhanced,
     colback=white,
     colframe=orange!80!black,
     fonttitle=\bfseries\Large,
-    title={\faUtensils\ #2 \hfill \faClock\ #3},
+    title={\faUtensils\ #2 \hfill {\small\faUsers\ #3 \quad \faClock\ #4}},
     % En lugar de 'no hyperref', usamos esto para evitar el conflicto
     hypertarget={receta#2}, 
     attach boxed title to top center={yshift=-3mm},
@@ -38,27 +38,27 @@
 }
 
 % --- COMANDO PARA EL ÍNDICE Y REFERENCIAS SIN WARNINGS ---
-\newcommand{\nuevaReceta}[3]{% 
+\newcommand{\nuevaReceta}[4]{%
     \phantomsection % Crea el ancla para el índice y hyperref
     \addcontentsline{toc}{section}{#1}% Registra en el índice
-    \begin{receta}{#1}{#2}% Abre la caja (Título y Tiempo)
-    \label{#3}% Establece la etiqueta para usar con \pageref
+    \begin{receta}{#1}{#2}{#3}% Abre la caja (Título, raciones y tiempo)
+    \label{#4}% Establece la etiqueta para usar con \pageref
 }
 
 % --- RECETAS CON IMAGEN ADAPTABLE ---
 \newsavebox{\cuerpoReceta}
 \newlength{\alturaImagenReceta}
 
-\NewDocumentEnvironment{recetaConImagen}{m m m m m +b}{%
+\NewDocumentEnvironment{recetaConImagen}{m m m m m m +b}{%
     \phantomsection
     \addcontentsline{toc}{section}{#1}%
-    \begin{receta}[height fill]{#1}{#2}%
-    \label{#3}%
+    \begin{receta}[height fill]{#1}{#2}{#3}%
+    \label{#4}%
     % Medimos primero el texto a su ancho definitivo.
     \setbox\cuerpoReceta=\vbox{%
         \hsize=\linewidth
         \linewidth=\hsize
-        #6%
+        #7%
     }%
     \setlength{\alturaImagenReceta}{%
         \dimexpr\tcbtextheight-\ht\cuerpoReceta-\dp\cuerpoReceta\relax
@@ -75,11 +75,11 @@
                 width=0.95\linewidth,
                 height=\dimexpr\alturaImagenReceta-3\baselineskip\relax,
                 keepaspectratio
-            ]{#4}%
+            ]{#5}%
             \hfil
         }%
         \vspace{0.3em}%
-        \parbox{\linewidth}{\centering\small\itshape #5}%
+        \parbox{\linewidth}{\centering\small\itshape #6}%
         \vfil
     }%
     \nointerlineskip
@@ -120,6 +120,29 @@
 \end{titlepage}
 \hypersetup{pageanchor=true}
 
+\chapter*{README del cocinero}
+\addcontentsline{toc}{chapter}{README del cocinero}
+
+Este libro nace, sobre todo, de la familia. Casi todas sus recetas han pasado de una persona a otra y forman parte de nuestra manera de cocinar. Algunas son platos típicos de Almería; otras quizá no se encuentren fuera de casa, porque son simplemente recetas de la familia.
+
+Entre unas y otras también tienen sitio esas recetas que te va dando la vida: las que llegan de amigos, viajes, pruebas, encuentros o días especiales. No pretende ser un manual cerrado, sino un recetario vivo al que volver dentro de muchos años.
+
+Las cantidades son orientativas y pueden evolucionar con cada nueva versión. Cuando una receta mejore, aquí quedará anotado el cambio: menos caldo, más reposo, otro punto de cocción o ese ingrediente que terminó marcando la diferencia.
+
+\begin{tcolorbox}[colback=orange!5, colframe=orange!50, title=Convenciones del libro]
+    \faUsers\ indica el rendimiento aproximado de la receta. \quad
+    \faClock\ distingue, cuando hace falta, el tiempo activo del tiempo total, incluidos reposos, frío o marinado.
+
+    \medskip
+    Las fotos son de los platos que realmente se cocinaron. No tienen que ser perfectas: forman parte de la historia de cada receta.
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+    \large\itshape Compilar, probar, corregir y volver a cocinar.
+\end{center}
+\clearpage
+
 \tableofcontents 
 \newpage
 
@@ -135,7 +158,6 @@
 \recetaPaginaCompleta{secciones/principales/arroz_lena.tex}
 \recetaBorrador{secciones/principales/arroz_pulpo.tex}
 \recetaPaginaCompleta{secciones/principales/asado_versatil.tex}
-\recetaPaginaCompleta{secciones/principales/caldo_pescado.tex}
 \recetaBorrador{secciones/principales/empedrao.tex}
 \recetaPaginaCompleta{secciones/principales/fajitas.tex}
 \recetaPaginaCompleta{secciones/principales/fideos.tex}
@@ -146,7 +168,11 @@
 \recetaBorrador{secciones/principales/migas.tex}
 \recetaBorrador{secciones/principales/pelotas_almerienses.tex}
 \recetaPaginaCompleta{secciones/principales/remojon.tex}
+\recetaPaginaCompleta{secciones/principales/tacos_al_pastor.tex}
 \recetaPaginaCompleta{secciones/principales/tacos_entrana.tex}
+
+\chapter{Bases y Fondos}
+\recetaPaginaCompleta{secciones/principales/caldo_pescado.tex}
 
 \chapter{Postres}
 \recetaPaginaCompleta{secciones/postres/mousse_limon.tex}
