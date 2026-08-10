@@ -97,6 +97,21 @@
 % Para publicarla, cambia \recetaBorrador por \recetaPaginaCompleta.
 \newcommand{\recetaBorrador}[1]{}
 
+% Historial opcional para recetas que hayan cambiado de verdad.
+\newcommand{\historialReceta}[1]{%
+    \par\smallskip
+    {\footnotesize\color{black!65}\textbf{Historial de la receta}\quad #1}
+    \par
+}
+
+% Origen opcional, solo cuando se conoce con claridad.
+\newcommand{\origenReceta}[1]{%
+    \begin{center}
+        \small\itshape\color{black!65}#1
+    \end{center}
+    \vspace{-0.4em}
+}
+
 % --- INICIO DEL DOCUMENTO ---
 \begin{document}
 
@@ -126,6 +141,8 @@
 Este libro nace, sobre todo, de la familia. Casi todas sus recetas han pasado de una persona a otra y forman parte de nuestra manera de cocinar. Algunas son platos típicos de Almería; otras quizá no se encuentren fuera de casa, porque son simplemente recetas de la familia.
 
 Entre unas y otras también tienen sitio esas recetas que te va dando la vida: las que llegan de amigos, viajes, pruebas, encuentros o días especiales. No pretende ser un manual cerrado, sino un recetario vivo al que volver dentro de muchos años.
+
+Cada receta conserva también su origen cuando lo conocemos: quién la hacía en casa, de quién la aprendimos o dónde apareció por primera vez.
 
 Las cantidades son orientativas y pueden evolucionar con cada nueva versión. Cuando una receta mejore, aquí quedará anotado el cambio: menos caldo, más reposo, otro punto de cocción o ese ingrediente que terminó marcando la diferencia.
 
@@ -167,12 +184,10 @@ Las cantidades son orientativas y pueden evolucionar con cada nueva versión. Cu
 \recetaBorrador{secciones/principales/gurullos_conejo.tex}
 \recetaBorrador{secciones/principales/migas.tex}
 \recetaBorrador{secciones/principales/pelotas_almerienses.tex}
+\recetaPaginaCompleta{secciones/principales/caldo_pescado.tex}
 \recetaPaginaCompleta{secciones/principales/remojon.tex}
 \recetaPaginaCompleta{secciones/principales/tacos_al_pastor.tex}
 \recetaPaginaCompleta{secciones/principales/tacos_entrana.tex}
-
-\chapter{Bases y Fondos}
-\recetaPaginaCompleta{secciones/principales/caldo_pescado.tex}
 
 \chapter{Postres}
 \recetaPaginaCompleta{secciones/postres/mousse_limon.tex}
