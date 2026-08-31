@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Última versión del libro Si esto compila, se come">
+  <title>Si esto compila, se come</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f5efe4;
+      color: #33261d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid #d9c9b6;
+      background: #fffaf2;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0.2rem 0 0;
+      color: #765f4d;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    a {
+      flex: none;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      background: #b34f16;
+      color: white;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      background: #83380f;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 75vh;
+      border: 0;
+      background: white;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        align-items: flex-start;
+      }
+
+      p {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Si esto compila, se come</h1>
+      <p>Esta página siempre muestra la última versión publicada.</p>
+    </div>
+    <a id="download" href="recetario.pdf" download>Descargar PDF</a>
+  </header>
+  <iframe id="viewer" title="Libro de recetas"></iframe>
+  <script>
+    const pdfUrl = `recetario.pdf?v=${Date.now()}`;
+    document.querySelector("#viewer").src = pdfUrl;
+    document.querySelector("#download").href = pdfUrl;
+  </script>
+</body>
+</html>
