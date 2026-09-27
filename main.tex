@@ -18,13 +18,32 @@
 \titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter.}{0.6em}{}
 \titlespacing*{\chapter}{0pt}{-30pt}{8pt}
 
+% Las cabeceras largas separan el nombre de las raciones y el tiempo.
+% El ancho máximo deja espacio para el borde y el relleno del título.
+\newsavebox{\tituloRecetaEnLinea}
+\newcommand{\tituloReceta}[3]{%
+    \sbox{\tituloRecetaEnLinea}{%
+        \faUtensils\ #1 \hfill {\small\faUsers\ #2 \quad \faClock\ #3}%
+    }%
+    \ifdim\wd\tituloRecetaEnLinea>0.95\linewidth
+        \parbox{0.95\linewidth}{%
+            \centering
+            \faUtensils\ #1\par
+            \smallskip
+            {\small\faUsers\ #2 \quad \faClock\ #3\par}%
+        }%
+    \else
+        \usebox{\tituloRecetaEnLinea}%
+    \fi
+}
+
 % --- DEFINICIÓN DEL ESTILO DE LA RECETA CORREGIDO ---
 \newtcolorbox{receta}[4][]{
     enhanced,
     colback=white,
     colframe=orange!80!black,
     fonttitle=\bfseries\Large,
-    title={\faUtensils\ #2 \hfill {\small\faUsers\ #3 \quad \faClock\ #4}},
+    title={\tituloReceta{#2}{#3}{#4}},
     % En lugar de 'no hyperref', usamos esto para evitar el conflicto
     hypertarget={receta#2}, 
     attach boxed title to top center={yshift=-3mm},
